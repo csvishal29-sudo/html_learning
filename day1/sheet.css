@@ -1,0 +1,18 @@
+.resume{
+    background-color: antiquewhite;
+    padding: 10px;
+}
+.content{
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    
+}
+.left{
+    background-color: blue;
+    padding: 10px;
+}
+.right{
+    background-color: brown;
+    padding: 10px;
+}

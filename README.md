@@ -4,6 +4,7 @@
 
 ## 📚 Topics Covered
 - Day 1: resume making 
+- Day 2: form learning
 
 
 ## 🎯 Goal

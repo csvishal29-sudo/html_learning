@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div style="text-align: center;">
+      <button onclick="Play()">Play</button>
+      <button onclick="stop()">Stop</button>
+      <button onclick="forward()">Forward</button>
+      <button onclick="backward()">Backward</button>
+      <br><br>
+      <video id="video1"   width="300" height="400" autoplay style="background-color: aqua;">
+        <source>
+        <source>
+        This video is not support 
+      </video>
+      <br>
+      <p>This is the best thing.</p>
+      <br> 
+        <iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0">
+</iframe>
+   </div>
+
+ 
+   <script>
+
+    var myVideo = document.getElementById("video1")
+
+    function Play(){
+        if(myVideo.paused){
+            myVideo.play();
+        }else{
+            myVideo.pause();
+        }
+    }
+    function forwaed(){
+        myVideo.forward();
+    }
+    function backward(){
+        myVideo.backward();
+    }
+
+   </script>
+    
+</body>
+</html>

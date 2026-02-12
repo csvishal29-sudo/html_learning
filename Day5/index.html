@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+</head>
+<body>
+    <div style=" background: pink; width: 300px;text-align: center;">
+    <h1>GeoLocation API</h1>
+    <p>Try to fetch location of current position</p>
+    <button onclick="getlocation()">Try it</button>
+    <p id="demo"></p>
+    </div>
+
+
+    <script>
+        const x=document.getElementById("demo");
+
+        function getlocation(){
+            if(navigator.geolocation){
+                navigator.geolocation.watchPosition(success,error)
+            }else{
+                x.innerHTML="permission denied!"
+            }
+
+            
+        }
+        function success(position){
+            x.innerHTML= "latitude: "+ position.coords.latitude+
+            "<br>longitude: "+ position.coords.longitude
+        }
+        function error(error){
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                    x.innerHTML="user permission is denied!"
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML="position not available"
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML="time is out!"
+                    break;
+                case error.UNKNOWNERROR:
+                    x.innerHTML="error is occured!"
+                    break;
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>

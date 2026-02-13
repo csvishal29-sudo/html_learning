@@ -1,53 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location</title>
+    <title>POOJA ONLINE STORE</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; margin: 0; padding: 10px; }
+        header { background: #6c5ce7; color: white; text-align: center; padding: 20px; border-radius: 10px; }
+        .container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; }
+        .card { background: white; border-radius: 15px; width: 300px; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; }
+        .price { color: #d63031; font-size: 22px; font-weight: bold; margin: 10px 0; }
+        .buy-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; }
+        #orderModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; }
+        .modal-content { background: white; width: 90%; max-width: 380px; margin: 50px auto; padding: 20px; border-radius: 15px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+    </style>
 </head>
 <body>
-    <div style=" background: pink; width: 300px;text-align: center;">
-    <h1>GeoLocation API</h1>
-    <p>Try to fetch location of current position</p>
-    <button onclick="getlocation()">Try it</button>
-    <p id="demo"></p>
+
+<header>
+    <h1>POOJA ONLINE STORE</h1>
+    <p>Premium Lehenga Collection - All at ₹800 (COD)</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <img src="IMG-20260212-WA0000.jpg" alt="Lehenga 1">
+        <h3>Royal Black Lehenga</h3>
+        <p class="price">₹800</p>
+        <button class="buy-btn" onclick="openOrder('Royal Black Lehenga')">Order on WhatsApp</button>
     </div>
 
+    <div class="card">
+        <img src="IMG-20260212-WA0002.jpg" alt="Lehenga 2">
+        <h3>Designer Pink Lehenga</h3>
+        <p class="price">₹800</p>
+        <button class="buy-btn" onclick="openOrder('Designer Pink Lehenga')">Order on WhatsApp</button>
+    </div>
 
-    <script>
-        const x=document.getElementById("demo");
+    <div class="card">
+        <img src="IMG-20260212-WA0003.jpg" alt="Lehenga 3">
+        <h3>Ethnic Green Lehenga</h3>
+        <p class="price">₹800</p>
+        <button class="buy-btn" onclick="openOrder('Ethnic Green Lehenga')">Order on WhatsApp</button>
+    </div>
+</div>
 
-        function getlocation(){
-            if(navigator.geolocation){
-                navigator.geolocation.watchPosition(success,error)
-            }else{
-                x.innerHTML="permission denied!"
-            }
+<div id="orderModal">
+    <div class="modal-content">
+        <h3>Delivery Details</h3>
+        <input type="text" id="name" placeholder="Aapka Naam">
+        <textarea id="address" placeholder="Poora Address aur PIN Code" rows="3"></textarea>
+        <button onclick="sendOrder()" style="background:#6c5ce7; color:white; border:none; padding:12px; width:100%; border-radius:8px;">Confirm Order</button>
+        <button onclick="closeModal()" style="background:none; color:red; border:none; width:100%; margin-top:10px;">Cancel</button>
+    </div>
+</div>
 
-            
-        }
-        function success(position){
-            x.innerHTML= "latitude: "+ position.coords.latitude+
-            "<br>longitude: "+ position.coords.longitude
-        }
-        function error(error){
-            switch(error.code){
-                case error.PERMISSION_DENIED:
-                    x.innerHTML="user permission is denied!"
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    x.innerHTML="position not available"
-                    break;
-                case error.TIMEOUT:
-                    x.innerHTML="time is out!"
-                    break;
-                case error.UNKNOWNERROR:
-                    x.innerHTML="error is occured!"
-                    break;
-            }
-            
-        }
-    </script>
-    
+<script>
+    var currentProduct = "";
+    var myNumber = "917379272009"; 
+
+    function openOrder(pName) {
+        currentProduct = pName;
+        document.getElementById('orderModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('orderModal').style.display = 'none';
+    }
+
+    function sendOrder() {
+        var cName = document.getElementById('name').value;
+        var cAddr = document.getElementById('address').value;
+        if(cName == "" || cAddr == "") { alert("Details bharein!"); return; }
+        var msg = "POOJA ONLINE STORE - NEW ORDER%0A%0A" + 
+                  "Product: " + currentProduct + "%0A" +
+                  "Price: ₹800 (COD)%0A" +
+                  "Customer: " + cName + "%0A" +
+                  "Address: " + cAddr;
+        window.open("https://wa.me/" + myNumber + "?text=" + msg, '_blank');
+        closeModal();
+    }
+</script>
+
 </body>
 </html>

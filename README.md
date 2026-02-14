@@ -5,6 +5,12 @@
 ## 📚 Topics Covered
 - Day 1: resume making 
 - Day 2: form learning
+- Day 3: login form
+- Day 4: video adding
+- Day 5: order adding
+- Day 6: adding drag&drop
+- Day 7: table data
+
 
 
 ## 🎯 Goal

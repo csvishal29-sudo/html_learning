@@ -10,7 +10,7 @@
 - Day 5: order adding
 - Day 6: adding drag&drop
 - Day 7: table data
-
+- Day 8:
 
 
 ## 🎯 Goal
